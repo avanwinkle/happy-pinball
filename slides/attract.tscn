@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbo6r1jhurby"]
+[gd_scene load_steps=5 format=3 uid="uid://bbo6r1jhurby"]
 
 [ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_slide.gd" id="1_mdxb5"]
+[ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_carousel.gd" id="2_qykvw"]
+[ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_variable.gd" id="3_1r2g5"]
+[ext_resource type="Texture2D" uid="uid://dounln3l35d26" path="res://addons/mpf-gmc/images/logo_mpf.png" id="4_dqhly"]
 
 [node name="Attract" type="Control"]
 layout_mode = 3
@@ -13,12 +16,80 @@ offset_right = 1280.0
 offset_bottom = 1024.0
 color = Color(0, 0.427451, 0.862745, 1)
 
-[node name="Label" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_top = 323.0
+[node name="MPFCarousel" type="Node2D" parent="."]
+script = ExtResource("2_qykvw")
+carousel_name = "attract"
+
+[node name="credits" type="Label" parent="MPFCarousel"]
+visible = false
+offset_top = 3.0
+offset_right = 1280.0
+offset_bottom = 1021.0
+theme_override_font_sizes/font_size = 80
+text = "INSERT CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1r2g5")
+variable_type = 2
+variable_name = "credits_string"
+
+[node name="title" type="Label" parent="MPFCarousel"]
+visible = false
+offset_top = 3.0
 offset_right = 1279.0
-offset_bottom = 479.0
+offset_bottom = 1023.0
 theme_override_font_sizes/font_size = 80
 text = "Welcome to Happy Pinball"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="mpf_logo" type="Sprite2D" parent="MPFCarousel"]
+visible = false
+position = Vector2(670, 522)
+texture = ExtResource("4_dqhly")
+
+[node name="last_scores_1p" type="Node2D" parent="MPFCarousel"]
+
+[node name="player1_score" type="Label" parent="MPFCarousel/last_scores_1p"]
+offset_right = 1280.0
+offset_bottom = 1023.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1r2g5")
+variable_type = 2
+variable_name = "player1_score"
+comma_separate = true
+min_digits = 2
+
+[node name="last_scores_2p" type="Node2D" parent="MPFCarousel"]
+visible = false
+
+[node name="player1_score" type="Label" parent="MPFCarousel/last_scores_2p"]
+offset_top = 220.0
+offset_right = 1280.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1r2g5")
+variable_type = 2
+variable_name = "player1_score"
+comma_separate = true
+min_digits = 2
+
+[node name="player2_score" type="Label" parent="MPFCarousel/last_scores_2p"]
+offset_top = 503.0
+offset_right = 1280.0
+offset_bottom = 837.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_1r2g5")
+variable_type = 2
+variable_name = "player2_score"
+comma_separate = true
+min_digits = 2
